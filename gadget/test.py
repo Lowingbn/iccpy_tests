@@ -12,12 +12,12 @@ class GadgetBinaryIOTestCase(unittest.TestCase):
         self.assertEqual(len(data['vel']), 2000)
         self.assertEqual(len(data['id']), 2000)
     
-class GadgetSnapshotTestCase(unittest.TestCase):
+class GadgetBinarySnapshotTestCase(unittest.TestCase):
 
     def test_load_snapshot(self):
-        snapshot = iccpy.gadget.Snapshot(directory="data", filename="gadget_binary_snapshot", snapnum=0)
+        snapshot = iccpy.gadget.load_snapshot(directory="data", filename="gadget_binary_snapshot", snapnum=0)
 
-        self.assertEqual(snapshot.header.num_particles[1], 2000)
+        self.assertEqual(snapshot.num_particles[1], 2000)
         self.assertEqual(len(snapshot.pos[1]), 2000)
         self.assertEqual(len(snapshot.vel[1]), 2000)
         self.assertEqual(len(snapshot.id[1]), 2000)
